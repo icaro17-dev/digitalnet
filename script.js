@@ -1,3 +1,33 @@
+// Menu mobile
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+const navLinksItems = document.querySelectorAll('.nav-links a');
+
+menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+});
+
+// Fechar menu ao clicar em um link
+navLinksItems.forEach(link => {
+    link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+});
+
+// Fechar menu ao clicar fora
+document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
 // Loading Screen
 window.addEventListener('load', () => {
     const loader = document.querySelector('.loading-screen');
@@ -106,10 +136,8 @@ counters.forEach(counter => {
 
 // Adicionar funcionalidade ao botão CTA do hero
 document.querySelector('.cta-button').addEventListener('click', function() {
-    const message = encodeURIComponent(
-        `Olá! Tenho interesse no plano Premium de 400 Mega por R$ 99,99/mês. Pode me ajudar?`
-    );
-    window.open(`https://wa.me/5599981461362?text=${message}`, '_blank');
+    const planosSection = document.querySelector('#planos');
+    planosSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 // Animação e funcionalidade dos botões de contratação
