@@ -1,0 +1,428 @@
+:root {
+    --primary-color: #0088ff;
+    --secondary-color: #004e92;
+    --accent-color: #00ffbb;
+    --text-color: #333333;
+    --light-bg: #e8f4ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Navbar */
+.navbar {
+    background-color: white;
+    padding: 1rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colorFlow 8s ease infinite;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    padding: 0 5%;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    animation: shine 20s linear infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes shine {
+    0% { transform: translateX(-50%) rotate(45deg); }
+    100% { transform: translateX(150%) rotate(45deg); }
+}
+
+.hero-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    width: 100%;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.cta-button {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 136, 255, 0.3);
+    transition: all 0.3s ease;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 136, 255, 0.4);
+}
+
+/* Services Section */
+.services {
+    padding: 5rem 5%;
+    background-color: var(--light-bg);
+}
+
+.service-card {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.service-header {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.service-header i {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.service-header h3 {
+    font-size: 2rem;
+    margin: 1rem 0;
+    color: white;
+}
+
+.service-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.service-content {
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.feature-column {
+    flex: 1;
+    padding: 1rem;
+}
+
+.feature-column h4 {
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.service-features {
+    list-style: none;
+}
+
+.service-features li {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.service-features i {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    .service-content {
+        flex-direction: column;
+    }
+    
+    .feature-column {
+        padding: 1rem 0;
+    }
+    
+    .service-card {
+        margin: 1rem;
+    }
+}
+
+/* Plans Section */
+.plans {
+    padding: 5rem 5%;
+}
+
+.plans h2 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.plan-card {
+    background: linear-gradient(145deg, #ffffff, #f3f3f3);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+}
+
+.plan-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0.5s;
+}
+
+.plan-card:hover::before {
+    left: 100%;
+}
+
+.plan-card.featured {
+    background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    transform: scale(1.05);
+}
+
+.plan-card.featured h3,
+.plan-card.featured .price {
+    color: white;
+}
+
+.plan-card.featured button {
+    background: var(--accent-color);
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.plan-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.plan-card ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.plan-card ul li {
+    margin-bottom: 0.5rem;
+}
+
+.plan-card button {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 136, 255, 0.3);
+    transition: all 0.3s ease;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.plan-card button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 136, 255, 0.4);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, var(--secondary-color), #002347);
+    position: relative;
+    overflow: hidden;
+    color: white;
+    padding: 3rem 5% 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px);
+    background: var(--accent-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Responsividade */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hero-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .service-card, .plan-card {
+        margin: 1rem;
+    }
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+} 
