@@ -142,19 +142,24 @@ document.querySelector('.cta-button').addEventListener('click', function() {
 
 // Animação e funcionalidade dos botões de contratação
 document.querySelectorAll('.plan-card button').forEach(button => {
-    // Encontrar o nome do plano, velocidade e preços
-    const planName = button.parentElement.querySelector('h3').textContent;
-    const planSpeed = button.parentElement.querySelector('ul li:first-child').textContent;
-    const planPrice = button.parentElement.querySelector('.price').textContent.trim();
+    // Encontrar o nome do plano e velocidade
+    const planCard = button.parentElement;
+    const planName = planCard.querySelector('h3').textContent;
+    const planSpeed = planCard.querySelector('ul li:first-child').textContent;
     
-    // Criar mensagem para o WhatsApp incluindo a promoção
-    const message = encodeURIComponent(
-        `Olá! Tenho interesse no plano ${planName} de ${planSpeed}. Primeira mensalidade R$ 9,99 e depois ${planPrice}. Pode me ajudar?`
-    );
+    // Definir a mensagem baseada no plano
+    let mensagem;
+    if (planName === 'Básico') {
+        mensagem = `Olá! Tenho interesse no plano ${planName} de ${planSpeed}. Primeira mensalidade R$ 9,99 e depois R$ 79,99/mês. Pode me ajudar?`;
+    } else if (planName === 'Premium') {
+        mensagem = `Olá! Tenho interesse no plano ${planName} de ${planSpeed}. Primeira mensalidade R$ 9,99 e depois R$ 99,99/mês. Pode me ajudar?`;
+    } else {
+        mensagem = `Olá! Tenho interesse no plano ${planName} de ${planSpeed}. Primeira mensalidade R$ 9,99 e depois R$ 129,99/mês. Pode me ajudar?`;
+    }
     
     // Adicionar evento de clique
     button.addEventListener('click', function() {
-        window.open(`https://wa.me/5599981461362?text=${message}`, '_blank');
+        window.open(`https://wa.me/5599981461362?text=${encodeURIComponent(mensagem)}`, '_blank');
     });
     
     // Manter as animações existentes
