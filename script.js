@@ -142,14 +142,14 @@ document.querySelector('.cta-button').addEventListener('click', function() {
 
 // Animação e funcionalidade dos botões de contratação
 document.querySelectorAll('.plan-card button').forEach(button => {
-    // Encontrar o nome do plano e o preço
+    // Encontrar o nome do plano, velocidade e preços
     const planName = button.parentElement.querySelector('h3').textContent;
     const planSpeed = button.parentElement.querySelector('ul li:first-child').textContent;
     const planPrice = button.parentElement.querySelector('.price').textContent.trim();
     
-    // Criar mensagem para o WhatsApp
+    // Criar mensagem para o WhatsApp incluindo a promoção
     const message = encodeURIComponent(
-        `Olá! Tenho interesse no plano ${planName} de ${planSpeed} por ${planPrice}. Pode me ajudar?`
+        `Olá! Tenho interesse no plano ${planName} de ${planSpeed}. Primeira mensalidade R$ 9,99 e depois ${planPrice}. Pode me ajudar?`
     );
     
     // Adicionar evento de clique
